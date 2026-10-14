@@ -34,33 +34,42 @@ kubectl get nodes --show-labels | grep blue
 # CKA
 kubectl set resources deployment wordpress --limits=cpu=200m,memory=512Mi --requests=cpu=100m,memory=256Mi
 
+```
 kubectl label namespace calico-system \
   pod-security.kubernetes.io/enforce=privileged \
   pod-security.kubernetes.io/warn=privileged \
   pod-security.kubernetes.io/audit=privileged \
   --overwrite
+```
 
-
+# Show rollout history
 kubectl rollout history deployment myapp -n production
+
+# Annotate last deployment - add comments
 kubectl annotate deployment myapp kubernetes.io/change-cause="updated image to nginx:1.17" -n production
 
+# Get resource quotas
 Kubectl describe resourcequota
 
 # patching
 kubectl get deployment resource-app -n patch-ns -o json
 
-
+# Run nslookup from pod ot another pod
+```
 cluster1-controlplane ~ ➜   kubectl get pod nginx-resolver-cka06-svcn -o wide
 cluster1-controlplane ~ ➜   IP=`kubectl get pod nginx-resolver-cka06-svcn -o wide --no-headers | awk '{print $6}' | tr '.' '-'`
 cluster1-controlplane ~ ➜   kubectl run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup $IP.default.pod > /root/CKA/nginx.pod.cka06.svcn
+```
 
 # Node Info
+```
 student-node ~ ➜  ssh cluster1-controlplane "kubectl top node --no-headers | sort -nr -k2 | head -1"
  cluster1-controlplane   127m   1%    703Mi   1%    
 student-node ~ ➜  ssh cluster3-controlplane "kubectl top node --no-headers | sort -nr -k2 | head -1"
 cluster3-controlplane   577m   7%    1081Mi   1%    
 student-node ~ ➜  ssh cluster4-controlplane "kubectl top node --no-headers | sort -nr -k2 | head -1"
 cluster4-controlplane   130m   1%    679Mi   1%    
+```
 
 # annotations
   annotations:
