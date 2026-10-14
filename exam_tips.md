@@ -33,5 +33,6 @@ So your instinct is right — secure your 66% first, then hunt for bonus points.
 
 # Links
 https://kubernetes.io/docs/reference/kubectl/quick-reference/
+
 https://docs.linuxfoundation.org/tc-docs/certification/certification-resources-allowed#certified-kubernetes-administrator-cka-and-certified-kubernetes-application-developer-ckad
 
