@@ -150,5 +150,7 @@ helm install argocd argocd/argo-cd --version 7.7.3 --set crds.install=false --na
 helm template argocd argocd/argo-cd --version 7.7.3 --set crds.install=false --namespace argocd > /root/argo-helm.yaml
 Prod
 
+# Show pods that will be destroyed first. Besteffort QoS
+```
 kubectl get pods -o custom-columns="NAME:.metadata.name,QOS:.status.qosClass" --no-headers | grep BestEffort | awk '{print $1}'
 ```
