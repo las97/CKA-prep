@@ -1,4 +1,5 @@
 Exactly — that's a legitimate and smart strategy.
+
 **The math works in your favor:**
 * 17 questions, equal weight
 * 66% to pass = roughly 12 questions correct
