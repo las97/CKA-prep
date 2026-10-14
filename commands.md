@@ -149,6 +149,7 @@ helm show values argocd/argo-cd --version 7.7.3 | grep -i crd -C 4
 helm install argocd argocd/argo-cd --version 7.7.3 --set crds.install=false --namespace argocd
 helm template argocd argocd/argo-cd --version 7.7.3 --set crds.install=false --namespace argocd > /root/argo-helm.yaml
 Prod
+```
 
 # Show pods that will be destroyed first. Besteffort QoS
 ```
